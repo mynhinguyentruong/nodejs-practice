@@ -7,7 +7,7 @@ export async function createUrl(url: string, slug: string): Promise<ShortUrl> {
   return await prisma.shortUrl.create({
     data: {
       url,
-      slug,
+      slug
     }
   })
 }
@@ -20,4 +20,11 @@ export async function getUrl(slug: string): Promise<string | null> {
   })
 
   return result === null ? result : result.url
+}
+
+export async function updateShortUrlLastOpened(urlSlug: string, lastOpened: Date): Promise<ShortUrl> {
+  return await prisma.shortUrl.update({
+    where: { slug: urlSlug },
+    data: { lastOpened }
+  })
 }

@@ -4,7 +4,7 @@ import Router from 'express-promise-router'
 // import logger from './lib/logger'
 import { RequestHandler } from 'express'
 
-import { createUrl, getUrl } from './db'
+import { createUrl, getUrl, updateShortUrlLastOpened } from './db'
 
 import generateRandomSlug from './slug'
 
@@ -35,9 +35,9 @@ router.get('/:slug', (async (_req, res) => {
   // Track the link open by logging the user's IP address and other information
   const ip = _req.ip
   const userAgent = _req.headers['user-agent'] ?? ''
-  const time = new Date().toISOString()
-  console.log(`Slug ${slug} opened by ${ip} at ${time} (User Agent: ${userAgent})`);
-
+  const time = new Date()
+  console.log(`Slug ${slug} opened by ${ip} at ${time.toISOString()} (User Agent: ${userAgent})`);
+  await updateShortUrlLastOpened(slug, time)
   // Slug Zu4Y7 opened by ::1 at 2023-04-13T17:29:49.429Z (User Agent: PostmanRuntime/7.30.0) Fetch through POSTMAN
   // Slug pGfaE opened by ::ffff:127.0.0.1 at 2023-04-13T17:31:49.035Z (User Agent: node-fetch/1.0 (+https://github.com/bitinn/node-fetch)) Fetch through localhost:3002/:slug
 
