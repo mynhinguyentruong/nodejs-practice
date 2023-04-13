@@ -8,7 +8,7 @@ import { createUrl, getUrl } from './db'
 
 import generateRandomSlug from './slug'
 
-import { CreateShortUrlResponse } from './types'
+import cors from 'cors'
 
 const router = Router()
 
@@ -18,7 +18,7 @@ router.get('/hello', (_, res) => {
   res.json({ message: 'hello' })
 })
 
-router.put('/url', (async (_req, res) => {
+router.put('/url', cors(), (async (_req, res) => {
   const randomSlug = generateRandomSlug(5);
   const { url } = _req.body;
   await createUrl(url, randomSlug);

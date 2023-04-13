@@ -2,6 +2,7 @@ import express, { Express } from 'express'
 import pino, { Options } from 'pino-http'
 import errorHandler from './middleware/error'
 import routes from './routes'
+import cors from 'cors'
 
 export function makeApp(): Express {
   const app = express()
@@ -24,6 +25,8 @@ export function makeApp(): Express {
 
   app.use(express.json({ verify: () => true })) // Just force it to parse all requests as json
   app.use(pino(options))
+
+  app.use(cors())
 
   app.use(routes)
 

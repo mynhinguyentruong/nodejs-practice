@@ -6,7 +6,7 @@ const nextConfig = {
       {
         source: '/:slug',
         destination: '/api/:slug', // Matched parameters can be used in the destination
-      },
+      }
     ]
   },
 }
