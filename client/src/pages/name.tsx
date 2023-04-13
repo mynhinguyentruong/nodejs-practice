@@ -6,7 +6,7 @@ export default function Page() {
   const [url, setUrl] = useState('')
   console.log(url)
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e: any): Promise<any> {
     e.preventDefault()
     console.log(url)
     let raw = JSON.stringify({
@@ -19,14 +19,14 @@ export default function Page() {
         headers: { 'Content-Type': 'application/json' }
       })
 
-    const data = await res.json()
-    console.log(data)
+      const data = await res.json()
+      console.log(data)
     } catch (error) {
       console.log(error)
     }
   }
 
-  function handleChange(e) {
+  function handleChange(e: any): void {
     setUrl(e.target.value)
     console.log(url)
   }
