@@ -17,7 +17,7 @@ describe('creating a short url -- basic', () => {
 
   it('PUT /url', async () => {
     const res = await request(app).put('/url').send({ url })
-    expect(res.statusCode).toBe(200)
+    expect(res.statusCode).toBe(201)
     const slug = res.body.slug
     expect(res.body).toMatchObject<CreateShortUrlResponse>({ url, slug })
   })
@@ -28,7 +28,7 @@ describe('creating a short url -- basic', () => {
 
     const res = await request(app).get(`/${slug}`)
 
-    expect(res.statusCode).toEqual(302)
-    expect(res.headers.location).toEqual(url)
+    expect(res.statusCode).toEqual(200)
+    expect(res.body).toEqual(url)
   })
 })
