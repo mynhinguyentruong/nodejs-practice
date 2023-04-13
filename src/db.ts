@@ -3,12 +3,11 @@ import { ShortUrl } from '@prisma/client'
 import { prisma } from '../prisma'
 
 // Example: Creating a new ShortUrl
-export async function createUrl(url: string, slug: string, lastOpened?: Date | null): Promise<ShortUrl> {
+export async function createUrl(url: string, slug: string): Promise<ShortUrl> {
   return await prisma.shortUrl.create({
     data: {
       url,
       slug,
-      lastOpened
     }
   })
 }
