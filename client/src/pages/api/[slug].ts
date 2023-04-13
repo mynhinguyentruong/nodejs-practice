@@ -7,5 +7,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const data = await fetch(`http://localhost:9000/${slug as string}`)
   const result = await data.json()
 
-  res.redirect(result)
+  res.redirect(302, result)
 }
