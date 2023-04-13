@@ -14,6 +14,8 @@ model ShortUrl {
   /// The slug for the shortened URL, e.g., https://url-shortener.com/<slug>
   slug String @unique
 
+  createdAt DateTime @default(now())
+
   @@index([slug, url])
   @@map("url")
 }
