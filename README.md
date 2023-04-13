@@ -75,7 +75,7 @@ Now you should be able to start writing and editing, while the Typescript compil
 
 ### Part 2: Front-End
   
-# How to start
+### How to start
 - Navigate to client folder with `cd client`
 - Start the Front-end with with `yarn dev`
 - Open in `http://localhost:${PORT}`
@@ -87,16 +87,23 @@ Now you should be able to start writing and editing, while the Typescript compil
   }`
 - Now you can test it out by adding the slug as endpoint at `http://localhost:${PORT}/:slug`
 
-### For Discussion
+### Discussion
 
-If you have time, please run through these questions for discussion.
-They don't necessarily need to be implemented (though if you really want to, and have time, go for it).
-
-- How might you track link opens?
-- We will likely be used by spammers. How might you prevent the use of our link shortener for spam?
-- How might you create authenticated or password-protected links?
-
-## Submission
+- How might we track link opens?
+  Well, one way to track is to update when a user access our endpoint with slug and update it in the Database, this has been implemented in the codebase. Alternatively, we can use a URL tracking tool like Google Analytics or Matomo to track link clicks and user behavior on your website.
+- We will likely be used by spammers. How might we prevent the use of our link shortener for spam?
+  To prevent the use of your link shortener for spam, you can implement several measures such as:
+  * CAPTCHA: Implementing a captcha or other verification mechanism to ensure that users are not bots.
+  * Manual approval process: Implementing a manual approval process for all links before they are shortened and made public.
+  * Rate limiting: Implementing rate limits to prevent users from generating large numbers of links in a short amount of time.
+  * User accounts: Requiring users to create accounts before generating shortened links can help prevent spam. User accounts can help track the activity of individual users and can also make it easier to block spam accounts. (To be implemented)
+* Implementing these strategies can help reduce spam, but it may not eliminate spam completely. Spammers can use a variety of tactics to evade detection, so it's important to stay vigilant and monitor the link shortener for signs of spam
+- How might we create authenticated or password-protected links?
+  - There are many ways, but let's use NextAuth.js as a solution. We will require user to login, once authenticated user can be directed to the right url
+  - First, we need Prisma Adapter,...etc -> migrate it. Guide available here: https://authjs.dev/reference/adapter/prisma
+  - Then get server session when making req to /api/[slug]
+  - If session is invalid, we redirect user to a login page. 
+  - Else continue to forward user to the link
 
 ## Notes
 
