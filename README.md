@@ -1,5 +1,3 @@
-# Supermojo Interview
-
 ## Requirements
 
 - Docker
@@ -24,7 +22,7 @@ First, read through the [requirements](#general-requirements). Then, check out P
 **Code Requirements**
 
 - Pay attention to code quality.
-- For take-home submission, please use `git` and stick to the strategy of atomic commits
+- Please use `git` and stick to the strategy of atomic commits
 
 #### API Interface
 
@@ -76,10 +74,18 @@ Now you should be able to start writing and editing, while the Typescript compil
   - You can run tests with `yarn test` (make sure to run the through the [first start](#first-start) instructions first
 
 ### Part 2: Front-End
-
-- Build a simple front-end that allows a user to generate a short URL from any URL they enter.
-- Use the language and framework of your choice (e.g., vanilla JS, React).
-- Please provide instructions for running the front-end
+  
+# How to start
+- Navigate to client folder with `cd client`
+- Start the Front-end with with `yarn dev`
+- Open in `http://localhost:${PORT}`
+- Navigate to `http://localhost:${PORT}/name`, fill in the URL and click Submit
+- Get the slug from the response. Example:
+- `{
+  "url": "https://www.youtube.com/watch?v=OGe1bTccCyg&t=1254s",
+  "slug": "lXtIF"
+  }`
+- Now you can test it out by adding the slug as endpoint at `http://localhost:${PORT}/:slug`
 
 ### For Discussion
 
