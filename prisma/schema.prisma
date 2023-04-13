@@ -15,6 +15,7 @@ model ShortUrl {
   slug String @unique
 
   createdAt DateTime @default(now())
+  lastOpened DateTime?
 
   @@index([slug, url])
   @@map("url")
